@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <h1 class="site-title">Therapy Practice</h1>
+        <p class="site-subtitle">Services</p>
+      </div>
+
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html" aria-current="page">Services</a>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="contact.html">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p class="lead">
+        Support is available for individuals, couples, families, and groups. Services are offered in-person or virtually.
+      </p>
+
+      <div class="tabs" role="tablist" aria-label="Therapy information tabs">
+        <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-services" id="tab-services" data-tab="panel-services">
+          Services
+        </button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-focus" id="tab-focus" data-tab="panel-focus">
+          Focus Areas
+        </button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-rates" id="tab-rates" data-tab="panel-rates">
+          Rates & Insurance
+        </button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-expect" id="tab-expect" data-tab="panel-expect">
+          What to Expect
+        </button>
+      </div>
+
+      <section class="tab-content active" role="tabpanel" id="panel-services" aria-labelledby="tab-services">
+        <ul class="two-col">
+          <li>Adult Therapy</li>
+          <li>Child Therapy</li>
+          <li>Teen Counseling</li>
+          <li>Individual Counseling</li>
+          <li>Couples Counseling</li>
+          <li>Family Counseling</li>
+          <li>Group Therapy</li>
+          <li>Parenting Support</li>
+          <li>Coaching / Supervision</li>
+        </ul>
+      </section>
+
+      <section class="tab-content" role="tabpanel" id="panel-focus" aria-labelledby="tab-focus">
+        <p>Therapy can help with many concerns, including:</p>
+        <ul class="two-col">
+          <li>Anxiety & stress</li>
+          <li>Depression & mood concerns</li>
+          <li>Relationship challenges</li>
+          <li>Grief & loss</li>
+          <li>Trauma recovery</li>
+          <li>Self-esteem</li>
+          <li>Life transitions</li>
+          <li>Personal growth</li>
+        </ul>
+      </section>
+
+      <section class="tab-content" role="tabpanel" id="panel-rates" aria-labelledby="tab-rates">
+        <p>
+          Example rate structure (adjust to your practice):
+        </p>
+        <div class="card">
+          <p><strong>Therapy session (60 min):</strong> $125</p>
+          <p><strong>Insurance:</strong> Many plans accepted (email to confirm eligibility)</p>
+          <p><strong>Other services:</strong> Coaching/supervision pricing available by inquiry</p>
+        </div>
+        <p class="small-note">
+          Rates and insurance info inspired by Happy 2 Help Counseling. :contentReference[oaicite:0]{index=0}
+        </p>
+      </section>
+
+      <section class="tab-content" role="tabpanel" id="panel-expect" aria-labelledby="tab-expect">
+        <ol class="steps">
+          <li><strong>Start:</strong> Reach out to schedule a consult or first session.</li>
+          <li><strong>Session:</strong> You’ll share what’s bringing you in and what you want to change.</li>
+          <li><strong>Plan:</strong> You and your therapist set goals and choose strategies together.</li>
+          <li><strong>Progress:</strong> Sessions are often weekly or biweekly and adjust over time.</li>
+        </ol>
+      </section>
+
+      <div class="section-actions">
+        <a class="button" href="contact.html">Book a Session</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© <span id="year"></span> Therapy Practice</p>
+      <p class="small-note">In crisis: call/text 988 (US).</p>
+    </div>
+  </footer>
+</body>
+</html>
