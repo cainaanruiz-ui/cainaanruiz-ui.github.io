@@ -1,38 +1,108 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy 2 Help Counseling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Therapy Practice</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <h1>CBT Therapy</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Therapy</a>
-    <a href="contact.html">Book</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <h1 class="site-title">Therapy Practice</h1>
+        <p class="site-subtitle">A supportive space for everyday people.</p>
+      </div>
 
-<main>
-  <section>
-    <h2>Support for Your Healing Journey</h2>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="services.html">Services</a>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="contact.html">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h2 class="hero-title">Accessible, personalized mental health support.</h2>
+        <p class="hero-text">
+          A calm, confidential environment—available in-person or virtually—so you can get support in a way that fits your life.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="contact.html">Book a Session</a>
+          <a class="button button-ghost" href="services.html">Explore Services</a>
+        </div>
+
+        <p class="small-note">
+          Inspiration/source of practice details: <a href="https://www.happy2helpcounseling.org/" target="_blank" rel="noreferrer">Happy 2 Help Counseling</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h3>Mission • Vision • Goal</h3>
+        <div class="cards">
+          <article class="card">
+            <h4>Mission</h4>
+            <p>Provide high-quality care with an emphasis on access and affordability.</p>
+          </article>
+          <article class="card">
+            <h4>Vision</h4>
+            <p>Create a setting that supports healing, growth, and resilience.</p>
+          </article>
+          <article class="card">
+            <h4>Goal</h4>
+            <p>Help clients reach personal goals using evidence-informed tools and skills.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <h3>Quick Services</h3>
+        <ul class="pill-list">
+          <li>Adult Therapy</li>
+          <li>Child Therapy</li>
+          <li>Teen Counseling</li>
+          <li>Couples Counseling</li>
+          <li>Family Counseling</li>
+          <li>Group Therapy</li>
+          <li>Parenting Support</li>
+          <li>Coaching / Supervision</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h3>Need help choosing?</h3>
+        <p>
+          If you’re not sure what kind of support is best, start with a consultation and we’ll help match you with the right fit.
+        </p>
+        <a class="button" href="contact.html">Get Started</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-row">
+    <p>© <span id="year"></span> Therapy Practice</p>
     <p>
-      A mental health practice for everyday people.
-Get accessible and personalized mental healthcare in-person or from the comfort of your home. 
+      <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a> •
+      <a href="tel:14046923539">(404) 692-3539</a>
     </p>
-
-    <a href="contact.html">Book a Session</a>
-  </section>
-</main>
-
-<footer>
-  <p>© 2026 Happy2HelpCounseling</p>
+  </div>
 </footer>
-
 </body>
 </html>
-
