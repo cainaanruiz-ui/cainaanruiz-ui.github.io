@@ -1,32 +1,36 @@
 :root{
-  --bg: #f6f7f6;
+  --bg: #f7f8f7;
   --panel: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --accent: #6b8f71;
+  --text: #0f172a;       /* deep slate */
+  --muted: #475569;      /* softer slate */
+  --line: #e6e9e6;
+  --accent: #2f6f62;     /* calming green */
+  --accent2: #0f766e;    /* teal hint */
 
-  --radius: 14px;
-  --shadow: 0 10px 30px rgba(0,0,0,.06);
+  --radius: 16px;
+  --shadow: 0 12px 30px rgba(2, 6, 23, .08);
 }
 
 *{ box-sizing: border-box; }
 
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
-a{ color: var(--accent); text-decoration: none; }
-a:hover{ text-decoration: underline; }
+h1,h2,h3,h4{
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
 
 .container{
-  width: min(980px, 92vw);
+  width: min(1040px, 92vw);
   margin: 0 auto;
 }
+
 
 .skip-link{
   position:absolute;
@@ -111,7 +115,13 @@ a:hover{ text-decoration: underline; }
   margin-top: 1rem;
   flex-wrap: wrap;
 }
-
+.hero .container{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
 .section{
   padding: 2rem 0;
 }
@@ -136,21 +146,30 @@ a:hover{ text-decoration: underline; }
 }
 
 .button{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
   border: 1px solid transparent;
-  background: var(--accent);
-  color: white;
-  padding: .7rem 1rem;
-  border-radius: 12px;
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: .75rem 1.05rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 10px 22px rgba(47,111,98,.22);
 }
-.button:hover{ text-decoration:none; filter: brightness(.98); }
-.button:focus{ outline: 3px solid rgba(107,143,113,.25); outline-offset: 2px; }
+
+.button:hover{
+  filter: brightness(.98);
+  text-decoration:none;
+}
 
 .button-ghost{
   background: transparent;
   color: var(--accent);
-  border-color: rgba(107,143,113,.35);
+  border-color: rgba(47,111,98,.35);
+  box-shadow: none;
 }
 
 .lead{
