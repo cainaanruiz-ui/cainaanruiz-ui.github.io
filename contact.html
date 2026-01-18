@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <h1 class="site-title">Therapy Practice</h1>
+        <p class="site-subtitle">Book a Session</p>
+      </div>
+
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="our-approach.html">Our Approach</a>
+        <a href="contact.html" aria-current="page">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <h2>Contact & Booking</h2>
+      <p class="lead">Send a booking request by email. This site does not store your information.</p>
+
+      <form id="bookingForm" class="form">
+        <label>
+          Full name
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Your email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Preferred days/times
+          <input type="text" name="times" placeholder="e.g., Tue/Thu after 5pm" />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="6" placeholder="Tell us what you’d like support with."></textarea>
+        </label>
+
+        <button class="button" type="submit">Open Email Draft</button>
+      </form>
+
+      <p class="small-note">
+        Example contact details from Happy 2 Help Counseling (only use if this is truly your practice): Luis@happy2helpcounseling.org • (404) 692-3539 • Atlanta, GA 30350. :contentReference[oaicite:2]{index=2}
+      </p>
+
+      <div class="card mt">
+        <h3>Practice contact (edit this)</h3>
+        <p><strong>Email:</strong> <span class="mono">yourpractice@email.com</span></p>
+        <p><strong>Phone:</strong> <span class="mono">(000) 000-0000</span></p>
+        <p><strong>Location:</strong> City, State</p>
+      </div>
+
+      <p class="small-note">
+        If you’re in immediate danger or crisis, call/text 988 (US) or your local emergency number.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© <span id="year"></span> Therapy Practice</p>
+    </div>
+  </footer>
+</body>
+</html>
