@@ -287,3 +287,33 @@ textarea{ resize: vertical; }
   .site-nav.open{ display:flex; }
   .header-row{ flex-wrap: wrap; }
 }
+
+.brand-link{
+  display:flex;
+  align-items:center;
+  gap: .85rem;
+  text-decoration:none;
+  color: inherit;
+}
+
+.logo-img{
+  width: 52px;
+  height: auto;
+  display:block;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.site-title{
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.site-subtitle{
+  font-size: .9rem;
+  color: var(--muted);
+}
