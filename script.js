@@ -65,7 +65,7 @@ if (bookingForm) {
     const message = (formData.get("message") || "").toString().trim();
 
     // IMPORTANT: change this to your real booking email
-    const to = "yourpractice@email.com";
+    const to = "Luis@happy2helpcounseling.org";
 
     const subject = encodeURIComponent("Therapy booking request");
     const bodyLines = [
