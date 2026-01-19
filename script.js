@@ -12,6 +12,17 @@ if (menuBtn && nav) {
   });
 }
 
+// Close mobile nav when a link is clicked
+if (nav) {
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+
 // Tabs (Services page)
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".tab-content");
