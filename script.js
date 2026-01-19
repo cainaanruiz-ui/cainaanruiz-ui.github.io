@@ -1,4 +1,5 @@
 // Set footer year
+// Set footer year
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -10,18 +11,15 @@ if (menuBtn && nav) {
     const isOpen = nav.classList.toggle("open");
     menuBtn.setAttribute("aria-expanded", String(isOpen));
   });
-}
 
-// Close mobile nav when a link is clicked
-if (nav) {
+  // Close mobile nav when a link is clicked
   nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       nav.classList.remove("open");
-      if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-expanded", "false");
     });
   });
 }
-
 
 // Tabs (Services page)
 const tabs = document.querySelectorAll(".tab");
@@ -65,6 +63,9 @@ if (tabs.length && panels.length) {
 
 // Email booking (Contact page) - opens an email draft
 const bookingForm = document.getElementById("bookingForm");
+const bookingStatus = document.getElementById("bookingStatus"); // optional element on page
+let mailtoAttempted = false;
+
 if (bookingForm) {
   bookingForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -77,31 +78,42 @@ if (bookingForm) {
 
     const to = "Luis@happy2helpcounseling.org";
 
-    // Keep it short to avoid mailto URL length issues
     const subject = encodeURIComponent("Therapy booking request");
+
+    // Keep the body reasonable length so mailto doesn't fail on some devices
+    const safeMessage = (message || "(No message provided)").slice(0, 1200);
+
     const bodyLines = [
       `Name: ${name}`,
       `Email: ${email}`,
       `Preferred days/times: ${times || "N/A"}`,
       "",
       "Message:",
-      (message || "(No message provided)").slice(0, 1200) // prevent super long drafts from breaking
+      safeMessage
     ];
     const body = encodeURIComponent(bodyLines.join("\n"));
 
     const mailtoUrl = `mailto:${to}?subject=${subject}&body=${body}`;
 
-    // Try to open the email draft
+    mailtoAttempted = true;
+
+    // Try to open the user's email client
     window.location.href = mailtoUrl;
 
-    // Fallback: if device blocks mailto, show a helpful message
-    setTimeout(() => {
-      // If nothing happened, user will still be on the page
-      alert(
-        "If your email app didn’t open, please email us directly at Luis@happy2helpcounseling.org or call (404) 692-3539."
-      );
-    }, 800);
+    // Optional: show a gentle note on the page (no popups)
+    if (bookingStatus) {
+      bookingStatus.textContent =
+        "An email draft should open in your email app. If it doesn’t, please email us directly at Luis@happy2helpcounseling.org.";
+    }
   });
 }
 
-
+// Optional smarter fallback: if user comes back to the page after attempting mailto,
+// remind them (without scaring them) how to contact.
+document.addEventListener("visibilitychange", () => {
+  if (!bookingStatus) return;
+  if (document.visibilityState === "visible" && mailtoAttempted) {
+    bookingStatus.textContent =
+      "If your email app didn’t open, you can email us directly at Luis@happy2helpcounseling.org or call (404) 692-3539.";
+  }
+});
