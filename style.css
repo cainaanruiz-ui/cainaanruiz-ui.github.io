@@ -359,3 +359,24 @@ textarea{ resize: vertical; }
   font-size: .9rem;
   color: var(--muted);
 }
+
+/* --- Mobile nav: make sure closed menu can't block clicks --- */
+.site-nav {
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    display: none;          /* fully removed when closed */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  .site-nav.open {
+    display: flex;          /* only exists when open */
+    flex-direction: column;
+  }
+}
