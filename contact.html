@@ -48,18 +48,28 @@
     <div class="container">
       <h2>Contact & Booking</h2>
       <p class="lead">
-        Send a booking request by email. This site does not store your information.
+        Send a booking request securely. This site does not store your information.
       </p>
 
-      <form id="bookingForm" class="form">
+      <!-- ✅ REAL SUBMIT FORM (works on desktop + mobile) -->
+      <!-- Replace YOUR_FORM_ID with your Formspree ID -->
+      <form
+        id="bookingForm"
+        class="form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+        <!-- Helps you see these fields in the email you receive -->
+        <input type="hidden" name="_subject" value="New booking request - Happy 2 Help Counseling" />
+
         <label>
           Full name
-          <input type="text" name="name" required />
+          <input type="text" name="name" autocomplete="name" required />
         </label>
 
         <label>
           Your email
-          <input type="email" name="email" required />
+          <input type="email" name="email" autocomplete="email" required />
         </label>
 
         <label>
@@ -72,12 +82,16 @@
           <textarea name="message" rows="6" placeholder="Tell us what you’d like support with."></textarea>
         </label>
 
-        <button class="button" type="submit">Open Email Draft</button>
+        <button class="button" type="submit">Send Booking Request</button>
+
+        <!-- Success / error messages -->
+        <p id="formStatus" class="small-note" aria-live="polite"></p>
       </form>
+
       <p class="small-note">
-  If the button doesn’t open your email app, please email us directly:
-  <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
-</p>
+        Prefer to email directly?
+        <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
+      </p>
 
       <p class="small-note">
         Happy 2 Help Counseling is located in Atlanta, Georgia and offers both in-person and virtual therapy services.
@@ -111,3 +125,4 @@
   </footer>
 </body>
 </html>
+
