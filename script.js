@@ -117,3 +117,46 @@ document.addEventListener("visibilitychange", () => {
       "If your email app didn’t open, you can email us directly at Luis@happy2helpcounseling.org or call (404) 692-3539.";
   }
 });
+
+
+// Booking form submit (Formspree) - works on desktop + mobile
+const bookingForm = document.getElementById("bookingForm");
+const statusEl = document.getElementById("formStatus");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", async (e) => {
+    // Let normal submit happen if fetch fails
+    e.preventDefault();
+
+    if (statusEl) {
+      statusEl.textContent = "Sending…";
+    }
+
+    try {
+      const formData = new FormData(bookingForm);
+      const response = await fetch(bookingForm.action, {
+        method: bookingForm.method,
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        bookingForm.reset();
+        if (statusEl) {
+          statusEl.textContent = "✅ Sent! We’ll respond as soon as possible.";
+        }
+      } else {
+        if (statusEl) {
+          statusEl.textContent =
+            "Something went wrong. Please email us directly at Luis@happy2helpcounseling.org.";
+        }
+      }
+    } catch (err) {
+      if (statusEl) {
+        statusEl.textContent =
+          "Network issue. Please email us directly at Luis@happy2helpcounseling.org.";
+      }
+    }
+  });
+}
+
