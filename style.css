@@ -9,6 +9,12 @@
 
   --radius: 16px;
   --shadow: 0 12px 30px rgba(2, 6, 23, .08);
+
+  /* Header theme (dark aqua/green) */
+  --header-bg: #0f3d3a;
+  --header-text: #ffffff;
+  --header-muted: rgba(255,255,255,.78);
+  --header-line: rgba(255,255,255,.14);
 }
 
 *{ box-sizing: border-box; }
@@ -52,11 +58,12 @@ h1,h2,h3,h4{
 
 /* Header */
 .site-header{
-  background: var(--panel);
-  border-bottom: 1px solid var(--line);
+  background: var(--header-bg);
+  color: var(--header-text);
+  border-bottom: 1px solid var(--header-line);
   position: sticky;
   top: 0;
-  z-index: 1000; /* keep header above everything */
+  z-index: 1000;
 }
 
 .header-row{
@@ -71,13 +78,13 @@ h1,h2,h3,h4{
 .brand-link{
   display:flex;
   align-items:center;
-  gap: .85rem;
+  gap: 1rem;              /* a bit more breathing room */
   text-decoration:none;
-  color: inherit;
+  color: var(--header-text);
 }
 
 .logo-img{
-  width: 52px;
+  width: 86px;            /* BIGGER LOGO */
   height: auto;
   display:block;
 }
@@ -88,14 +95,15 @@ h1,h2,h3,h4{
 }
 
 .site-title{
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 800;
   line-height: 1.1;
+  color: var(--header-text);
 }
 
 .site-subtitle{
   font-size: .9rem;
-  color: var(--muted);
+  color: var(--header-muted);
 }
 
 /* Navigation */
@@ -109,25 +117,30 @@ h1,h2,h3,h4{
   padding: .45rem .6rem;
   border-radius: 10px;
   text-decoration: none;
-  color: inherit;
+  color: var(--header-text);
 }
 
 .site-nav a:hover{
-  background: rgba(107,143,113,.10);
+  background: rgba(255,255,255,.10);
   text-decoration: none;
 }
 
 .site-nav a[aria-current="page"]{
-  background: rgba(107,143,113,.14);
+  background: rgba(255,255,255,.18);
 }
 
+/* Mobile menu button */
 .menu-btn{
   display:none;
-  border:1px solid var(--line);
-  background: var(--panel);
+  border: 1px solid var(--header-line);
+  background: rgba(255,255,255,.08);
+  color: var(--header-text);
   padding:.5rem .75rem;
   border-radius: 10px;
   cursor:pointer;
+}
+.menu-btn:hover{
+  background: rgba(255,255,255,.12);
 }
 
 /* Hero */
@@ -386,27 +399,34 @@ textarea{ resize: vertical; }
 
   .menu-btn{ display:inline-block; }
 
-  /* KEY FIX: mobile menu is NOT absolute, so it can't block clicks weirdly */
+  /* Drop-down menu (no overlay) */
   .header-row{ flex-wrap: wrap; }
 
   .site-nav{
     display:none;
     width: 100%;
     padding: .75rem 0 0;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--header-line);
     margin-top: .75rem;
     flex-direction: column;
     gap: .25rem;
-    position: static; /* <- critical */
+    position: static;
+    background: transparent;
   }
 
   .site-nav a{
     display:block;
     padding: .6rem .9rem;
+    border-radius: 12px;
   }
 
   .site-nav.open{
     display:flex;
+  }
+
+  /* Slightly smaller logo on small screens */
+  .logo-img{
+    width: 72px;
   }
 }
 
