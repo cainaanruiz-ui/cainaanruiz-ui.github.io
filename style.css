@@ -483,5 +483,40 @@ textarea{ resize: vertical; }
   }
 }
 
+/* ===== MOBILE MENU CLICK FIX ===== */
+
+/* Make sure header is above everything */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+/* Prevent the nav from blocking clicks when closed */
+#site-nav {
+  pointer-events: none;
+}
+
+/* Only clickable when open (mobile) or normal (desktop) */
+#site-nav.open {
+  pointer-events: auto;
+}
+
+/* Ensure the menu button is always clickable */
+.menu-btn {
+  position: relative;
+  z-index: 2100;
+}
+
+/* Mobile layout: dropdown menu that doesn't overlay invisible layers */
+@media (max-width: 820px) {
+  #site-nav {
+    display: none;
+  }
+
+  #site-nav.open {
+    display: flex;
+  }
+}
 
 
