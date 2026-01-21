@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy 2 Help Counseling</title>
+
+  <style>
+    :root{
+      --accent: #1f5f5a;
+      --accent2: #0f766e;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    .splash-wrap{
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .splash-logo{
+      width: min(60vw, 360px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,.25));
+      transition: transform .25s ease, filter .25s ease;
+    }
+
+    .splash-wrap:hover .splash-logo{
+      transform: scale(1.05);
+      filter: drop-shadow(0 28px 55px rgba(0,0,0,.35));
+    }
+
+    .enter-text{
+      margin-top: 1.25rem;
+      color: rgba(255,255,255,.9);
+      font-weight: 700;
+      letter-spacing: .3px;
+      font-size: 1rem;
+      opacity: .9;
+    }
+
+    @keyframes fadeIn{
+      from{ opacity: 0; transform: scale(.95); }
+      to{ opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="splash-wrap" onclick="enterSite()">
+    <img
+      src="assets/logo.png"
+      alt="Happy 2 Help Counseling logo"
+      class="splash-logo"
+    />
+    <div class="enter-text">Click to Enter</div>
+  </div>
+
+  <script>
+    function enterSite(){
+      window.location.href = "home.html";
+    }
+
+    // Optional: press Enter or Space to continue
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        enterSite();
+      }
+    });
+  </script>
+
+</body>
+</html>
