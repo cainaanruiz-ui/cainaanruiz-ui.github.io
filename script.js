@@ -6,39 +6,19 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const menuBtn = document.querySelector(".menu-btn");
 const nav = document.getElementById("site-nav");
 
-function closeMenu() {
-  if (!nav || !menuBtn) return;
-  nav.classList.remove("open");
-  menuBtn.setAttribute("aria-expanded", "false");
-}
-
-function toggleMenu() {
-  if (!nav || !menuBtn) return;
-  const isOpen = nav.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded", String(isOpen));
-}
-
 if (menuBtn && nav) {
   menuBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    toggleMenu();
+    const isOpen = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close menu when a link is clicked (mobile friendly)
+  // Close menu after clicking a nav link (mobile)
   nav.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (link) closeMenu();
-  });
-
-  // Close menu if you tap outside of it (mobile friendly)
-  document.addEventListener("click", (e) => {
-    const clickedInsideHeader = e.target.closest(".site-header");
-    if (!clickedInsideHeader) closeMenu();
-  });
-
-  // Close on Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
+    const a = e.target.closest("a");
+    if (!a) return;
+    nav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
   });
 }
 
@@ -51,6 +31,7 @@ function activateTab(tab) {
     t.classList.remove("active");
     t.setAttribute("aria-selected", "false");
   });
+
   panels.forEach(p => p.classList.remove("active"));
 
   tab.classList.add("active");
@@ -64,21 +45,6 @@ function activateTab(tab) {
 if (tabs.length && panels.length) {
   tabs.forEach(tab => {
     tab.addEventListener("click", () => activateTab(tab));
-    tab.addEventListener("keydown", (e) => {
-      const index = Array.from(tabs).indexOf(tab);
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        const next = tabs[(index + 1) % tabs.length];
-        next.focus();
-        activateTab(next);
-      }
-      if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        const prev = tabs[(index - 1 + tabs.length) % tabs.length];
-        prev.focus();
-        activateTab(prev);
-      }
-    });
   });
 }
 
