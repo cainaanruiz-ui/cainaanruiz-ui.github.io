@@ -519,4 +519,14 @@ textarea{ resize: vertical; }
   }
 }
 
+/* ===== CLICK FIX: do NOT disable clicks on desktop ===== */
+#site-nav { pointer-events: auto; }
+
+/* Only hide/show the menu on mobile */
+@media (max-width: 820px) {
+  #site-nav { display: none; }
+  #site-nav.open { display: flex; }
+}
+
+
 
