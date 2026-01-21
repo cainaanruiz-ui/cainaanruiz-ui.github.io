@@ -528,5 +528,28 @@ textarea{ resize: vertical; }
   #site-nav.open { display: flex; }
 }
 
+/* ===== Button spacing + clean action rows ===== */
+.actions{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.actions-spaced{
+  gap: 1rem;              /* more space between buttons */
+  margin-top: 1rem;
+}
+
+.section-actions{
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;              /* fix tight buttons everywhere */
+}
+
+/* Optional: slightly bigger click area */
+.button, .site-nav a, .tab{
+  -webkit-tap-highlight-color: transparent;
+}
 
 
