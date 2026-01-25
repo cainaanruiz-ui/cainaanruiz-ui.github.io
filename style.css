@@ -200,7 +200,11 @@ a{ color: inherit; }
 
 .hero{
   padding: 2.2rem 0 1.5rem;
+  min-height: 60vh; /* makes the top portion feel full on desktop */
+  display: flex;
+  align-items: center;
 }
+
 
 .hero-title{
   font-size: clamp(1.8rem, 3vw, 2.4rem);
