@@ -388,3 +388,57 @@ textarea{ resize: vertical; }
   .cards{ grid-template-columns: 1fr; }
   .two-col{ columns: 1; }
 }
+
+/* =============================
+   Non-home header: centered logo only
+============================= */
+
+.header-row--center{
+  position: relative;
+}
+
+/* Center the logo while keeping Menu on the left */
+.brand--center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-link--center{
+  gap: 0;
+}
+
+/* Slightly smaller center logo for inner pages */
+.logo-img--center{
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+/* Mobile layout: keep logo centered and dropdown working */
+@media (max-width: 820px){
+
+  .brand--center{
+    position: static;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+    order: 1;
+    margin-top: .5rem;
+  }
+
+  .menu-btn{
+    order: 0;
+  }
+
+  .site-nav{
+    order: 2;
+  }
+
+  .logo-img--center{
+    width: 120px;
+  }
+}
