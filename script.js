@@ -1,24 +1,15 @@
-// Footer year
+// Year in footer
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Mobile menu toggle
 const menuBtn = document.querySelector(".menu-btn");
-const nav = document.getElementById("site-nav");
+const siteNav = document.getElementById("site-nav");
 
-if (menuBtn && nav) {
-  menuBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const isOpen = nav.classList.toggle("open");
+if (menuBtn && siteNav) {
+  menuBtn.addEventListener("click", () => {
+    const isOpen = siteNav.classList.toggle("open");
     menuBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  // Close menu after clicking a nav link (mobile)
-  nav.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if (!a) return;
-    nav.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", "false");
   });
 }
 
@@ -26,25 +17,23 @@ if (menuBtn && nav) {
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".tab-content");
 
-function activateTab(tab) {
-  tabs.forEach(t => {
-    t.classList.remove("active");
-    t.setAttribute("aria-selected", "false");
-  });
-
-  panels.forEach(p => p.classList.remove("active"));
-
-  tab.classList.add("active");
-  tab.setAttribute("aria-selected", "true");
-
-  const id = tab.dataset.tab;
-  const panel = document.getElementById(id);
-  if (panel) panel.classList.add("active");
-}
-
 if (tabs.length && panels.length) {
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => activateTab(tab));
+  tabs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.tab;
+
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+
+      panels.forEach((p) => p.classList.remove("active"));
+
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      const panel = document.getElementById(targetId);
+      if (panel) panel.classList.add("active");
+    });
   });
 }
-
