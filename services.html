@@ -10,22 +10,30 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- ===== HEADER (NON-HOME VERSION: LOGO ONLY, CENTERED) ===== -->
   <header class="site-header">
-    <div class="container header-row">
-      <div class="brand">
-        <a class="brand-link" href="home.html" aria-label="Happy 2 Help Counseling home">
-          <img src="assets/logo.png" class="logo-img" alt="Happy 2 Help Counseling logo" />
-          <span class="brand-text">
-            <span class="site-title">Happy 2 Help Counseling</span>
-            <span class="site-subtitle">Atlanta, GA • In-person & Virtual</span>
-          </span>
+    <div class="container header-row header-row--alt">
+
+      <!-- spacer for true centering -->
+      <div class="header-spacer"></div>
+
+      <!-- centered logo only -->
+      <div class="brand brand--center">
+        <a class="brand-link brand-link--logoonly" href="home.html" aria-label="Happy 2 Help Counseling home">
+          <img
+            src="assets/logo.png"
+            class="logo-img logo-img--center"
+            alt="Happy 2 Help Counseling logo"
+          />
         </a>
       </div>
 
+      <!-- menu button stays right -->
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
         Menu
       </button>
 
+      <!-- nav -->
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="home.html">Home</a>
         <a href="services.html" aria-current="page">Services</a>
@@ -33,11 +41,15 @@
         <a href="team.html">Team</a>
         <a href="our-approach.html">Our Approach</a>
         <a href="contact.html">Book</a>
-        <a href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">Client Portal</a>
+        <a href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">
+          Client Portal
+        </a>
       </nav>
+
     </div>
   </header>
 
+  <!-- ===== MAIN ===== -->
   <main id="main" class="section">
     <div class="container">
       <h2>Our Services</h2>
@@ -52,6 +64,7 @@
         </a>
       </div>
 
+      <!-- ===== TABS ===== -->
       <div class="tabs" role="tablist" aria-label="Therapy information tabs">
         <button class="tab active" type="button" role="tab" aria-selected="true"
           aria-controls="panel-services" id="tab-services" data-tab="panel-services">
@@ -78,6 +91,8 @@
           Immigration Evaluations
         </button>
       </div>
+
+      <!-- ===== TAB PANELS ===== -->
 
       <section class="tab-content active" role="tabpanel" id="panel-services" aria-labelledby="tab-services">
         <ul class="two-col">
@@ -108,14 +123,22 @@
       </section>
 
       <section class="tab-content" role="tabpanel" id="panel-rates" aria-labelledby="tab-rates">
-        <p>For current rates, insurance information, or billing questions, please contact us directly.</p>
+        <p>
+          For current rates, insurance information, or billing questions, please contact us directly.
+        </p>
 
         <div class="card">
-          <p><strong>Email:</strong> <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a></p>
-          <p><strong>Phone:</strong> <a href="tel:14046923539">(404) 692-3539</a></p>
+          <p><strong>Email:</strong>
+            <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
+          </p>
+          <p><strong>Phone:</strong>
+            <a href="tel:14046923539">(404) 692-3539</a>
+          </p>
         </div>
 
-        <p class="small-note">Sliding scale availability and insurance options may vary by provider and service type.</p>
+        <p class="small-note">
+          Sliding scale availability and insurance options may vary by provider and service type.
+        </p>
       </section>
 
       <section class="tab-content" role="tabpanel" id="panel-expect" aria-labelledby="tab-expect">
@@ -173,9 +196,11 @@
       <div class="section-actions" style="margin-top: 1.25rem;">
         <a class="button" href="contact.html">Book a Session</a>
       </div>
+
     </div>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container footer-row">
       <p>© <span id="year"></span> Happy 2 Help Counseling</p>
@@ -187,4 +212,3 @@
   </footer>
 </body>
 </html>
-
