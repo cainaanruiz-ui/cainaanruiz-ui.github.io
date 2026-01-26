@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-page="contact">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -42,7 +42,7 @@
     <div class="container">
       <h2>Book an Appointment</h2>
       <p class="lead">
-        Send a booking request below. This form will send securely to our inbox.
+        Send a secure booking request below. We’ll follow up as soon as possible.
       </p>
 
       <div class="card mt">
@@ -66,24 +66,21 @@
 
           <label>
             Message
-            <textarea name="message" rows="6" placeholder="Tell us what you’d like support with." required></textarea>
+            <textarea name="message" rows="6" placeholder="Tell us what you’d like support with."></textarea>
           </label>
 
-          <button class="button" type="submit">Send Booking Request</button>
+          <button class="button" type="submit" id="bookingSubmitBtn">
+            Send Booking Request
+          </button>
 
-          <p id="bookingStatus" class="small-note" role="status" aria-live="polite"></p>
-
-          <p class="small-note">
-            If you prefer, you can also use:
-            <a href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">Client Portal</a>.
-          </p>
-
-          <p class="small-note">
-            If sending fails, email us directly:
-            <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
-            or call <a href="tel:14046923539">(404) 692-3539</a>.
-          </p>
+          <p class="small-note" id="bookingStatus" role="status" aria-live="polite"></p>
         </form>
+
+        <p class="small-note">
+          If you’re unable to submit the form, you can email us directly:
+          <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
+          or call <a href="tel:14046923539">(404) 692-3539</a>.
+        </p>
       </div>
 
       <div class="card mt">
@@ -114,3 +111,4 @@
   </footer>
 </body>
 </html>
+
