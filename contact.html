@@ -10,36 +10,31 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- HEADER (non-home layout: centered logo only + menu) -->
   <header class="site-header">
-    <div class="container header-row header-row--alt">
-      
-      <!-- Left spacer keeps logo truly centered -->
-      <div class="header-spacer" aria-hidden="true"></div>
-
-      <!-- Center logo only -->
-      <div class="brand brand--center">
-        <a class="brand-link brand-link--logoonly" href="home.html" aria-label="Happy 2 Help Counseling home">
-          <img src="assets/logo.png" class="logo-img logo-img--center" alt="Happy 2 Help Counseling logo" />
+    <div class="container header-row">
+      <div class="brand">
+        <a class="brand-link" href="home.html" aria-label="Happy 2 Help Counseling home">
+          <img src="assets/logo.png" class="logo-img" alt="Happy 2 Help Counseling logo" />
+          <span class="brand-text">
+            <span class="site-title">Happy 2 Help Counseling</span>
+            <span class="site-subtitle">Atlanta, GA • In-person & Virtual</span>
+          </span>
         </a>
       </div>
 
-      <!-- Menu button on right -->
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
         Menu
       </button>
 
-      <!-- Nav -->
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="home.html">Home</a>
         <a href="services.html">Services</a>
         <a href="immigration.html">Immigration</a>
         <a href="team.html">Team</a>
         <a href="our-approach.html">Our Approach</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfoquejnYCV55m9-qjfx5wqKhg78y1EKIaeBwE54VWWO645Ew/viewform" target="_blank" rel="noreferrer">Book</a>
+        <a href="contact.html" aria-current="page">Book</a>
         <a href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">Client Portal</a>
       </nav>
-
     </div>
   </header>
 
@@ -47,40 +42,48 @@
     <div class="container">
       <h2>Book an Appointment</h2>
       <p class="lead">
-        Use our secure booking request form. We’ll follow up as soon as possible.
+        Send a booking request below. This form will send securely to our inbox.
       </p>
 
       <div class="card mt">
-        <h3>Start Booking</h3>
-        <p>
-          Click below to open the booking request form.
-        </p>
+        <h3>Booking Request</h3>
 
-        <div class="actions actions-spaced">
-          <a
-            class="button"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfoquejnYCV55m9-qjfx5wqKhg78y1EKIaeBwE54VWWO645Ew/viewform"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Open Booking Form
-          </a>
+        <form id="bookingForm" class="form" novalidate>
+          <label>
+            Full name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
 
-          <a
-            class="button button-ghost"
-            href="https://www.therapyportal.com/p/h2hcounseling/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Client Portal
-          </a>
-        </div>
+          <label>
+            Your email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
 
-        <p class="small-note">
-          If the form doesn’t open, you can also email us directly at
-          <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
-          or call <a href="tel:14046923539">(404) 692-3539</a>.
-        </p>
+          <label>
+            Preferred days/times
+            <input type="text" name="times" placeholder="e.g., Tue/Thu after 5pm" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="6" placeholder="Tell us what you’d like support with." required></textarea>
+          </label>
+
+          <button class="button" type="submit">Send Booking Request</button>
+
+          <p id="bookingStatus" class="small-note" role="status" aria-live="polite"></p>
+
+          <p class="small-note">
+            If you prefer, you can also use:
+            <a href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">Client Portal</a>.
+          </p>
+
+          <p class="small-note">
+            If sending fails, email us directly:
+            <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
+            or call <a href="tel:14046923539">(404) 692-3539</a>.
+          </p>
+        </form>
       </div>
 
       <div class="card mt">
