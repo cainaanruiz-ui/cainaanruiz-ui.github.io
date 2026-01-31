@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body data-page="contact">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -42,21 +42,21 @@
     <div class="container">
       <h2>Book an Appointment</h2>
       <p class="lead">
-        Send a secure booking request below. We’ll follow up as soon as possible.
+        Send a secure booking request. We’ll follow up as soon as possible.
       </p>
 
       <div class="card mt">
-        <h3>Booking Request</h3>
+        <h3>Booking Request Form</h3>
 
-        <form id="bookingForm" class="form" novalidate>
+        <form id="bookingForm" class="form" autocomplete="on">
           <label>
             Full name
-            <input type="text" name="name" autocomplete="name" required />
+            <input type="text" name="name" required />
           </label>
 
           <label>
             Your email
-            <input type="email" name="email" autocomplete="email" required />
+            <input type="email" name="email" required />
           </label>
 
           <label>
@@ -69,15 +69,18 @@
             <textarea name="message" rows="6" placeholder="Tell us what you’d like support with."></textarea>
           </label>
 
-          <button class="button" type="submit" id="bookingSubmitBtn">
-            Send Booking Request
-          </button>
+          <div class="actions actions-spaced">
+            <button class="button" type="submit">Send Booking Request</button>
+            <a class="button button-ghost" href="https://www.therapyportal.com/p/h2hcounseling/" target="_blank" rel="noreferrer">
+              Client Portal
+            </a>
+          </div>
 
-          <p class="small-note" id="bookingStatus" role="status" aria-live="polite"></p>
+          <p id="formStatus" class="small-note" role="status" aria-live="polite"></p>
         </form>
 
         <p class="small-note">
-          If you’re unable to submit the form, you can email us directly:
+          If you don’t receive a confirmation, you can also email us directly at
           <a href="mailto:Luis@happy2helpcounseling.org">Luis@happy2helpcounseling.org</a>
           or call <a href="tel:14046923539">(404) 692-3539</a>.
         </p>
@@ -111,4 +114,3 @@
   </footer>
 </body>
 </html>
-
