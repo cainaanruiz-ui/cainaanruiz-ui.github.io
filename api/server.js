@@ -1,77 +1,112 @@
 import express from "express";
-import cors from "cors";
 import nodemailer from "nodemailer";
 
 const app = express();
 
-// Allow your website to call this API
-app.use(cors({
-  origin: true, // you can lock this to your exact domain later
-  methods: ["POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "X-API-Key"]
-}));
+// ---- Config
+const {
+  TO_EMAIL,
+  FROM_EMAIL,
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USER,
+  SMTP_PASS,
+  SMTP_SECURE,
+  API_KEY,
+  ALLOWED_ORIGIN
+} = process.env;
 
-app.use(express.json());
+// ---- Body parser
+app.use(express.json({ limit: "250kb" }));
 
-// Simple health check
-app.get("/", (req, res) => res.status(200).send("OK"));
+// ---- CORS (critical)
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
 
-// Booking endpoint
-app.post("/booking", async (req, res) => {
+  // Only allow your site (or allow all if ALLOWED_ORIGIN not set)
+  if (ALLOWED_ORIGIN && origin === ALLOWED_ORIGIN) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (!ALLOWED_ORIGIN) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
+
+  res.setHeader("Vary", "Origin");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-api-key");
+  res.setHeader("Access-Control-Max-Age", "86400");
+
+  // Handle preflight
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  next();
+});
+
+// ---- Health check
+app.get("/", (req, res) => {
+  res.status(200).send("ok");
+});
+
+// ---- Send endpoint
+app.post("/send", async (req, res) => {
   try {
-    // Optional basic protection (recommended)
-    const expectedKey = process.env.API_KEY;
-    if (expectedKey && req.headers["x-api-key"] !== expectedKey) {
-      return res.status(401).json({ ok: false, error: "Unauthorized" });
+    // API key protection
+    const key = req.headers["x-api-key"];
+    if (API_KEY && key !== API_KEY) {
+      return res.status(401).send("Unauthorized");
     }
 
     const { name, email, times, message } = req.body || {};
 
     if (!name || !email) {
-      return res.status(400).json({ ok: false, error: "Missing required fields" });
+      return res.status(400).send("Missing required fields");
     }
 
-    // SMTP config (set these as Cloud Run environment variables)
+    // Transport
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT || 465),
-      secure: String(process.env.SMTP_SECURE || "true") === "true",
+      host: SMTP_HOST || "smtp.gmail.com",
+      port: Number(SMTP_PORT || 465),
+      secure: String(SMTP_SECURE || "true") === "true",
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        user: SMTP_USER,
+        pass: SMTP_PASS
       }
     });
 
-    const toEmail = process.env.TO_EMAIL || "Luis@happy2helpcounseling.org";
+    const safeTimes = times ? String(times) : "(not provided)";
+    const safeMsg = message ? String(message) : "(not provided)";
 
     const subject = `New Booking Request: ${name}`;
     const text =
-`New booking request
+`New booking request received.
 
 Name: ${name}
 Email: ${email}
-Preferred days/times: ${times || "(not provided)"}
+Preferred times: ${safeTimes}
 
 Message:
-${message || "(not provided)"}
+${safeMsg}
 `;
 
     await transporter.sendMail({
-      from: process.env.FROM_EMAIL || process.env.SMTP_USER,
-      to: toEmail,
+      from: FROM_EMAIL || SMTP_USER,
+      to: TO_EMAIL || SMTP_USER,
       replyTo: email,
       subject,
       text
     });
 
-    return res.json({ ok: true });
+    return res.status(200).send("sent");
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ ok: false, error: "Server error" });
+    console.error("SEND ERROR:", err);
+    return res.status(500).send("Server error");
   }
 });
 
-// Cloud Run listens on 8080
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// ---- Cloud Run port
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log("Listening on", port);
+});
 
